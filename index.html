@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Doctor Appointment System</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+
+  <header>
+
+    <h1>🏥 Doctor Appointment System</h1>
+
+    <p>Book your appointment instantly on WhatsApp</p>
+
+  </header>
+
+  <!-- APPOINTMENT FORM -->
+
+  <div class="card">
+
+    <h2>Book Appointment</h2>
+
+    <label>Enter Patient Name</label>
+
+    <input type="text" id="name" placeholder="e.g. Ahmed">
+
+    <label>Enter Phone Number</label>
+
+    <input type="text" id="phone" placeholder="e.g. 9876543210">
+
+    <label>Enter Date</label>
+
+    <input type="date" id="date">
+
+    <label>Enter Time</label>
+
+    <input type="time" id="time">
+
+    <label>Select Doctor</label>
+
+    <select id="doctor">
+
+      <option value="919164167886">Dr. Mohammed Thousif</option>
+
+      <option value="917892846453">Dr. Faizan Rasheed</option>
+
+      <option value="919380578007">Dr. Aboobaquer Sanad</option>
+
+      <option value="918296759158">Dr. Sheikh Afil H</option>
+
+      <option value="917353026836">Dr. Ruvez Abdul Rehman</option>
+
+    </select>
+
+    <label>Enter Reason for Visit</label>
+
+    <textarea id="reason" placeholder="e.g. Fever, headache"></textarea>
+
+    <button onclick="sendWhatsApp()">Book Appointment</button>
+
+  </div>
+
+  <!-- AVAILABLE DOCTORS -->
+
+  <div class="card">
+
+    <h2>Available Doctors</h2>
+
+    <div class="doctor-grid">
+
+      <div class="doctor-card">
+
+        <h3>👨‍⚕️ Dr. Mohammed Thousif</h3>
+
+        <p><b>Specialist:</b> General Physician</p>
+
+        <p><b>Experience:</b> 8 Years</p>
+
+        <p><b>Timing:</b> 10:00 AM - 2:00 PM</p>
+
+        <button onclick="selectDoctor('919164167886')">Book Now</button>
+
+      </div>
+
+      <div class="doctor-card">
+
+        <h3>👨‍⚕️ Dr. Faizan Rasheed</h3>
+
+        <p><b>Specialist:</b> Cardiologist</p>
+
+        <p><b>Experience:</b> 6 Years</p>
+
+        <p><b>Timing:</b> 2:00 PM - 6:00 PM</p>
+
+        <button onclick="selectDoctor('917892846453')">Book Now</button>
+
+      </div>
+
+      <div class="doctor-card">
+
+        <h3>👨‍⚕️ Dr. Aboobaquer Sanad</h3>
+
+        <p><b>Specialist:</b> Dermatologist</p>
+
+        <p><b>Experience:</b> 5 Years</p>
+
+        <p><b>Timing:</b> 11:00 AM - 3:00 PM</p>
+
+        <button onclick="selectDoctor('919380578007')">Book Now</button>
+
+      </div>
+
+      <div class="doctor-card">
+
+        <h3>👨‍⚕️ Dr. Sheikh Afil H</h3>
+
+        <p><b>Specialist:</b> Pediatrician</p>
+
+        <p><b>Experience:</b> 7 Years</p>
+
+        <p><b>Timing:</b> 4:00 PM - 8:00 PM</p>
+
+        <button onclick="selectDoctor('918296759158')">Book Now</button>
+
+      </div>
+
+      <div class="doctor-card">
+
+        <h3>👨‍⚕️ Dr. Ruvez Abdul Rehman</h3>
+
+        <p><b>Specialist:</b> Orthopedic</p>
+
+        <p><b>Experience:</b> 9 Years</p>
+
+        <p><b>Timing:</b> 9:00 AM - 1:00 PM</p>
+
+        <button onclick="selectDoctor('917353026836')">Book Now</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+function sendWhatsApp() {
+
+  let name = document.getElementById("name").value;
+
+  let phone = document.getElementById("phone").value;
+
+  let date = document.getElementById("date").value;
+
+  let time = document.getElementById("time").value;
+
+  let doctor = document.getElementById("doctor").value;
+
+  let reason = document.getElementById("reason").value;
+
+  let message =
+
+`🏥 Doctor Appointment Request
+
+👤 Patient Name: ${name}
+
+📞 Phone: ${phone}
+
+📅 Date: ${date}
+
+⏰ Time: ${time}
+
+🩺 Reason: ${reason}`;
+
+  let url = "https://wa.me/" + doctor + "?text=" + encodeURIComponent(message);
+
+  window.open(url, "_blank");
+
+}
+
+// Auto select doctor from card
+
+function selectDoctor(number){
+
+  document.getElementById("doctor").value = number;
+
+  alert("Doctor selected successfully!");
+
+}
+
+</script>
+
+</body>
+
+</html>
